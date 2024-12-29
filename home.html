@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Consolidated styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: #000000;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d2dfdd, #ffcc00);
+            color: #130101;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #0b0101;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+    #about {
+        flex-direction: column;
+    }
+
+    #about .image {
+        margin-bottom: 20px;
+    }
+}
+
+
+        #about .content {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        #about .content h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        #about .content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        #about .image {
+            flex: 1;
+            text-align: center;
+        }
+
+        #about .image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+          /* Animation for sliding effect */
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.project {
+    animation: slideIn 1s ease-in-out;
+    cursor: pointer; /* To indicate interactivity */
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+}
+
+.project:hover {
+    background-color: #f0f8ff;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+        .project, .resume-section {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        #projects:hover .project, .project.hovered {
+            transform: translateX(0);
+        }
+
+        .resume-section {
+            transform: translateX(100%);
+        }
+
+        #resume:hover .resume-section, .resume-section.hovered {
+            transform: translateX(0);
+        }
+
+        footer {
+            background: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer .social a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        footer .social a:hover {
+            color: #ffcc00;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: #0073e6;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+        
+    </style>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+    const projectSection = document.querySelector('#projects');
+    const projects = document.querySelectorAll('.project');
+    const resumeSection = document.querySelector('#resume');
+    const resumeItems = document.querySelectorAll('.resume-section');
+
+    projectSection.addEventListener('mouseover', () => {
+        projects.forEach((project) => project.classList.add('hovered'));
+    });
+
+    resumeSection.addEventListener('mouseover', () => {
+        resumeItems.forEach((item) => item.classList.add('hovered'));
+    });
+});
+
+// Function to handle redirection
+function redirectToGithub(url) {
+    window.open(url, '_blank');
+}
+
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about" class="container">
+        <div class="content">
+            <h2>PALA VENKATA DINESH REDDY</h2>
+            <p>I’m a passionate coder and tech enthusiast, eager to explore innovative ideas, solve challenges, and create impactful solutions through continuous learning and creative problem-solving.</p>
+        </div>
+        <div class="image">
+            <img src="3.jpg" alt="Your Image">
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>My Projects</h2>
+        <div class="project" onclick="redirectToGithub('https://github.com/dinesh31-bit/honeybee-diseasePrediction.git')">
+            <h3>HoneyBee Disease Prediction USING FLASK</h3>
+            <p>There is a virus called DWV which infects the entire colony of the beehive.</p>
+        </div>
+        <div class="project" onclick="redirectToGithub('https://github.com/dinesh31-bit/vocalizer.git')">
+            <h3>Vocalizer: Speech-to-Text and Text-to-Speech Conversion </h3>
+            <p>NLP model which will help to convert speach to text and text to speach</p>
+        </div>
+        <div class="project" onclick="redirectToGithub('https://github.com/dinesh31-bit/vehicle-speed-prediction.git')">
+            <h3>vehicle speed prediction</h3>
+            <p>This project aims to develop a sophisticated speed camera system using computer vision techniques with OpenCV 
+                in Python. </p>
+        </div>
+        <div class="project" onclick="redirectToGithub('https://github.com/dinesh31-bit/search-partime-work-')">
+            <h3>Find a work</h3>
+            <p>This web application connects workers and employers. Employers can post job requirements for part-time or full-time work in any industry, including household tasks. Workers can browse job listings and find suitable opportunities online.</p>
+        </div>
+    </section>
+
+    <section id="resume" class="container">
+        <h2>My Resume</h2>
+        <div class="resume-section">
+            <h3>Education</h3>
+            <p><strong>BTech in Computer Science</strong><br>Kalasalingam Academy Of Research And Education, 2021-2025</p>
+        </div>
+        <div class="resume-section">
+            <h3>Skills</h3>
+            <ul>
+                <li>Programming Languages: Python, Java</li>
+                <li>Web Development: HTML, CSS</li>
+                <li>Database Management: SQL</li>
+                <li>Tools: Git</li>
+            </ul>
+        </div>
+        <div class="resume-section">
+            <h3>Certifications</h3>
+            <p>ISRO AIML <a href="https://drive.google.com/file/d/1mVfer75aKX-0phGwOJRf5r1-dLOX5Ffm/view?usp=sharing">view</a></p>
+            <p>SQL <a href="https://drive.google.com/file/d/1h9R482L-7E4v0soL4gVAI3aZqpEC_WGE/view?usp=sharing">view</a></p>
+        </div>
+        <div class="resume-section">
+            <h3>Hackathon</h3>
+            <p>IIT Jammu <a href="https://drive.google.com/file/d/1CJqaz3pJbvpAI9g0C3PyXM7NHwYUGKyo/view?usp=sharing">view</a></p>
+            <p>VIT Chennai <a href="https://drive.google.com/file/d/1CNlePcVBmT3pbrDOvrrAEL7I82oe5F2e/view?usp=sharing">view</a></p>
+            <p>IIIT Kanchipuram <a href="https://drive.google.com/file/d/1Gsj1i_zXBD__QzKQML1LJsuvc0cHj5j7/view?usp=sharing">view</a></p>
+            <p>triNIT <a href="https://drive.google.com/file/d/1wSeQeOEY7eiYJFZO0-ssxluYSVTSuQec/view?usp=sharing">view</a></p>
+        </div>
+        <div class="resume-section">
+            <h3>Hobbies</h3>
+            <p>Hiking, Reading Novels, Interested in Wildlife.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact Me</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <div class="form-group">
+                <input type="hidden" name="access_key" value="22cbff00-5b76-4e2a-bf39-881673f8c600">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social">
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
